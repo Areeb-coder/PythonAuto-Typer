@@ -1,0 +1,30 @@
+{
+  "name": "smart-auto-typer",
+  "version": "1.0.0",
+  "description": "Premium realtime phone-controlled desktop typing ecosystem",
+  "private": true,
+  "workspaces": [
+    "apps/web",
+    "apps/backend",
+    "apps/shared",
+    "apps/typing-engine",
+    "apps/desktop-runtime"
+  ],
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter web dev\" \"pnpm --filter backend dev\" \"pnpm --filter typing-engine dev\"",
+    "build": "pnpm --filter web build && pnpm --filter backend build && pnpm --filter typing-engine build",
+    "start": "concurrently \"pnpm --filter web start\" \"pnpm --filter backend start\"",
+    "db:push": "pnpm --filter backend db:push",
+    "db:reset": "pnpm --filter backend db:reset",
+    "db:studio": "pnpm --filter backend db:studio"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0",
+    "typescript": "^5.5.0"
+  },
+  "packageManager": "pnpm@9.x",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

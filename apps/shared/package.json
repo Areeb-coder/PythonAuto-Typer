@@ -1,0 +1,17 @@
+{
+  "name": "@smart-typer/shared",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\backend\\src\\database.ts": {
+    "mtime": 1778407749.3952384,
+    "hash": "de963bfea36fe8788bd08cb3a07ec7c6"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\backend\\src\\index.ts": {
+    "mtime": 1778407749.3964427,
+    "hash": "581f8af8e1f9b8e9374e5c5f541aa9d4"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\backend\\src\\logger.ts": {
+    "mtime": 1778407749.3952384,
+    "hash": "20d891ed59e0ec078e86eda02eb89d6d"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\backend\\src\\services\\device.ts": {
+    "mtime": 1778407749.3952384,
+    "hash": "5d0dacd8388b78dc8dd0e38c1af3998c"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\backend\\src\\services\\logging.ts": {
+    "mtime": 1778407749.3952384,
+    "hash": "a3321f99fbe7322809f9e21edff8f406"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\backend\\src\\services\\qr.ts": {
+    "mtime": 1778407749.3952384,
+    "hash": "268d642a4a48f68d9ed54a93cc9fc14c"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\backend\\src\\services\\session.ts": {
+    "mtime": 1778407749.3952384,
+    "hash": "4e6e3ddb6ed6bec67dd5d65ebd7615b9"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\backend\\src\\services\\socket-handlers.ts": {
+    "mtime": 1778407749.3964427,
+    "hash": "1a406ff79f4b82611b27e507538e1ea9"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\backend\\src\\services\\typing.ts": {
+    "mtime": 1778407749.3952384,
+    "hash": "27181e7d8adbf5213300301513ad8a7a"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\desktop-runtime\\launcher.py": {
+    "mtime": 1778407749.3964427,
+    "hash": "8588e2f82ad6add9723a42fa3b56cba5"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\shared\\src\\index.ts": {
+    "mtime": 1778407749.1647613,
+    "hash": "6ac62355032856e44fe644d0237487a0"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\shared\\src\\types.ts": {
+    "mtime": 1778407749.3952384,
+    "hash": "6c9b39c95bd694fe0f5a1f5e47f341c9"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\typing-engine\\engine.py": {
+    "mtime": 1778407749.3964427,
+    "hash": "fb98aea01850e678659cbe9e4bc31da5"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\next.config.js": {
+    "mtime": 1778407749.3964427,
+    "hash": "a2c2eef05e21d96c844416fc38af4388"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\postcss.config.js": {
+    "mtime": 1778407749.3964427,
+    "hash": "4b78cb8a84ab5335f07dfa8fa9f1c0ae"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\tailwind.config.js": {
+    "mtime": 1778407749.3964427,
+    "hash": "a0fc7fb9845a256af7262b9f94949b91"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\app\\layout.tsx": {
+    "mtime": 1778407749.3964427,
+    "hash": "5d83706e3f4ede8e668432a599ec3de7"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\app\\page.tsx": {
+    "mtime": 1778407749.3964427,
+    "hash": "2904570070252f032a98457fe1da4fc5"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\app\\controller\\page.tsx": {
+    "mtime": 1778407749.3964427,
+    "hash": "a74850a2248e5fa002cee70bab0635d5"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\app\\dashboard\\page.tsx": {
+    "mtime": 1778407749.3964427,
+    "hash": "a5bc8a64dd3298fd63f68dfdd05cc1d3"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\app\\devices\\page.tsx": {
+    "mtime": 1778407749.3964427,
+    "hash": "6d5be7ee09efd32b44b29d046e4a4917"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\app\\settings\\page.tsx": {
+    "mtime": 1778407749.3964427,
+    "hash": "b3552707b40d2cd51c61c8a1e5ddfd2e"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\src\\lib\\api.ts": {
+    "mtime": 1778407749.3964427,
+    "hash": "c4148b64b58a02419eed7989d8637610"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\src\\lib\\socket.ts": {
+    "mtime": 1778407749.3964427,
+    "hash": "643afd8cb02274e3921f0290e46b39a0"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\src\\lib\\stores.ts": {
+    "mtime": 1778407749.3964427,
+    "hash": "6cbac043929f468da1d72f6763340ffa"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\web\\src\\lib\\utils.ts": {
+    "mtime": 1778407749.3964427,
+    "hash": "655c28a792d294f0ed5c232e64482e14"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\ARCHITECTURE.md": {
+    "mtime": 1778407749.3964427,
+    "hash": "433646c48b16ae8ccd970053cd1997e5"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\BUILD_SUMMARY.md": {
+    "mtime": 1778407749.3964427,
+    "hash": "4650cd889e1fa4be71b76affdc37d018"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\GETTING_STARTED.md": {
+    "mtime": 1778407749.3964427,
+    "hash": "34201a69807420af0a294db9b845006d"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\pnpm-workspace.yaml": {
+    "mtime": 1778407970.4550774,
+    "hash": "d4165fb0bb8bc54635b4cbe827859fc4"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\PROJECT_INDEX.md": {
+    "mtime": 1778407749.3964427,
+    "hash": "234e8c53ac7166edeb3d1d0cceccc057"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\README.md": {
+    "mtime": 1778407749.3964427,
+    "hash": "40d14ee86b9f71679a6a67daaf37cceb"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\STARTUP_GUIDE.md": {
+    "mtime": 1778407749.3964427,
+    "hash": "915e9524fcf420c47d450f61d80e7bcd"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\VERIFICATION_GUIDE.md": {
+    "mtime": 1778407749.3964427,
+    "hash": "b664759b58bc3a06930117d17e20f1ac"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\desktop-runtime\\README.md": {
+    "mtime": 1778407749.3964427,
+    "hash": "1fd4c3413fe9a2829fad51bd7d5ffe5f"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\typing-engine\\README.md": {
+    "mtime": 1778407749.3964427,
+    "hash": "a92998cb48b2f51799ec478b061b64a9"
+  },
+  "E:\\Projects\\PythonAuto Typer 2.0\\apps\\typing-engine\\requirements.txt": {
+    "mtime": 1778407749.3964427,
+    "hash": "4e95762d38b62b9edfe735cdfe4ddc4c"
+  }
+}

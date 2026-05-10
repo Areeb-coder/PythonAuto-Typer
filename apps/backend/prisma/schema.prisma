@@ -1,0 +1,131 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Device {
+  id            String   @id @default(cuid())
+  name          String
+  type          String   @default("phone") // phone, tablet, desktop
+  trusted       Boolean  @default(false)
+  lastSeen      DateTime @default(now())
+  pairedAt      DateTime @default(now())
+  sessionToken  String   @unique
+  
+  sessions      Session[]
+  typingHistory TypingHistory[]
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@index([sessionToken])
+}
+
+model Session {
+  id            String   @id @default(cuid())
+  deviceId      String
+  device        Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  sessionToken  String   @unique
+  isActive      Boolean  @default(true)
+  
+  lastActivity  DateTime @default(now())
+  expiresAt     DateTime
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@index([deviceId])
+  @@index([sessionToken])
+}
+
+model Settings {
+  id                    String   @id @default(cuid())
+  
+  typingSpeed           Int      @default(60) // WPM
+  reconnectBehavior     String   @default("automatic")
+  backendIp             String   @default("localhost")
+  websocketUrl          String   @default("ws://localhost:4000")
+  theme                 String   @default("dark")
+  typingDelay           Int      @default(0) // ms
+  emergencyStopKey      String   @default("Escape")
+  autoReconnect         Boolean  @default(true)
+  reconnectInterval     Int      @default(1000) // ms
+  maxReconnectAttempts  Int      @default(-1) // -1 for infinite
+  
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+model TypingHistory {
+  id          String   @id @default(cuid())
+  deviceId    String
+  device      Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  
+  text        String
+  charCount   Int
+  status      String   @default("pending") // pending, completed, error
+  speed       Int      @default(60) // chars per second or WPM
+  duration    Int      @default(0) // milliseconds
+  
+  startedAt   DateTime?
+  completedAt DateTime?
+  error       String?
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([deviceId])
+  @@index([createdAt])
+}
+
+model Snippet {
+  id        String   @id @default(cuid())
+  name      String
+  content   String
+  category  String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([category])
+}
+
+model QueueHistory {
+  id            String   @id @default(cuid())
+  
+  text          String
+  status        String   @default("pending") // pending, typing, completed, error
+  speed         Int?
+  
+  queuedAt      DateTime @default(now())
+  startedAt     DateTime?
+  completedAt   DateTime?
+  
+  estimatedTime Int? // seconds
+  actualTime    Int? // milliseconds
+  
+  error         String?
+  
+  @@index([status])
+  @@index([queuedAt])
+}
+
+model Log {
+  id        String   @id @default(cuid())
+  level     String   @default("info") // info, warn, error, debug
+  category  String   // backend, websocket, typing, device, reconnect, queue, pairing
+  message   String
+  metadata  String? // JSON string
+  
+  createdAt DateTime @default(now())
+  
+  @@index([level])
+  @@index([category])
+  @@index([createdAt])
+}
