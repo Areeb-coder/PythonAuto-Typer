@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+python tools/versioning/auto_track_from_git.py
+
+# Ensure tracking artifacts are included in the commit
+git add -f updates.log current_version.txt changelog.md

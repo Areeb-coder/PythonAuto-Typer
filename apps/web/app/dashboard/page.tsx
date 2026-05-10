@@ -68,6 +68,12 @@ export default function DashboardPage() {
           System Dashboard
         </h1>
 
+        <div className="mb-6">
+          <Link href="/dashboard/ai-assist" className="btn-primary">
+            Open AI Assist Workspace
+          </Link>
+        </div>
+
         {isLoading ? (
           <div className="text-center text-slate-400 py-12">Loading dashboard...</div>
         ) : (

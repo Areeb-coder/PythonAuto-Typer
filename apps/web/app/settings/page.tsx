@@ -244,6 +244,72 @@ export default function SettingsPage() {
               </div>
             </div>
 
+            <div className="card">
+              <h2 className="text-lg font-bold mb-6">AI Assist Settings</h2>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">
+                    AI Mode
+                  </label>
+                  <select
+                    value={formData.aiMode || 'solve'}
+                    onChange={(e) => handleChange('aiMode', e.target.value)}
+                    className="input-field"
+                  >
+                    <option value="solve">solve</option>
+                    <option value="explain">explain</option>
+                    <option value="simplify">simplify</option>
+                    <option value="rewrite">rewrite</option>
+                    <option value="answer-only">answer-only</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">
+                    OCR Provider
+                  </label>
+                  <select
+                    value={formData.ocrProvider || 'paddle'}
+                    onChange={(e) => handleChange('ocrProvider', e.target.value)}
+                    className="input-field"
+                  >
+                    <option value="paddle">PaddleOCR</option>
+                    <option value="huggingface">Hugging Face OCR</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">
+                    Preprocessing Quality
+                  </label>
+                  <select
+                    value={formData.preprocessingQuality || 'balanced'}
+                    onChange={(e) => handleChange('preprocessingQuality', e.target.value)}
+                    className="input-field"
+                  >
+                    <option value="fast">fast</option>
+                    <option value="balanced">balanced</option>
+                    <option value="high">high</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">
+                    Capture Resolution
+                  </label>
+                  <select
+                    value={formData.captureResolution || 'medium'}
+                    onChange={(e) => handleChange('captureResolution', e.target.value)}
+                    className="input-field"
+                  >
+                    <option value="low">low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
             {/* Action Buttons */}
             <div className="flex gap-4">
               <button

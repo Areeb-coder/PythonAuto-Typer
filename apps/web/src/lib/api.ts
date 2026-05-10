@@ -115,3 +115,41 @@ export async function getEngineStatus() {
     throw error;
   }
 }
+
+export async function saveGeminiKey(apiKey: string) {
+  const response = await api.post('/api/ai-assist/key', { apiKey });
+  return response.data;
+}
+
+export async function getGeminiKeyHint() {
+  const response = await api.get('/api/ai-assist/key-hint');
+  return response.data;
+}
+
+export async function processAiAssist(payload: {
+  imageBase64: string;
+  source?: 'region' | 'window' | 'monitor';
+  ocrProvider?: 'paddle' | 'huggingface';
+  preprocessingQuality?: 'fast' | 'balanced' | 'high';
+  mode?: 'solve' | 'explain' | 'simplify' | 'rewrite' | 'answer-only';
+  deviceId?: string;
+}) {
+  const response = await api.post('/api/ai-assist/process', payload);
+  return response.data;
+}
+
+export async function approveAiAssistTyping(payload: {
+  text: string;
+  speed?: number;
+  deviceId: string;
+}) {
+  const response = await api.post('/api/ai-assist/approve-typing', payload);
+  return response.data;
+}
+
+export async function getAiAssistSessions(limit = 10) {
+  const response = await api.get('/api/ai-assist/sessions', {
+    params: { limit },
+  });
+  return response.data;
+}

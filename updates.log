@@ -1,0 +1,87 @@
+
+==================================================
+Update #1
+Version: v1
+
+Date: 2026-05-10
+Time: 18:56:48
+
+Prompt:
+"Automatic pre-commit tracked update"
+
+Affected Files:
+
+* .githooks/
+* GETTING_STARTED.md
+* ai_context.md
+* apps/backend/prisma/prisma/dev.db
+* apps/backend/prisma/schema.prisma
+* apps/backend/src/index.ts
+* apps/backend/src/services/ai-assist/ai-providers.ts
+* apps/backend/src/services/ai-assist/ocr-providers.ts
+* apps/backend/src/services/ai-assist/processing-queue.ts
+* apps/backend/src/services/ai-assist/secret-store.ts
+* apps/backend/src/services/ai-assist/service.ts
+* apps/shared/src/types.ts
+* apps/web/app/dashboard/ai-assist/page.tsx
+* apps/web/app/dashboard/page.tsx
+* apps/web/app/settings/page.tsx
+* apps/web/next-env.d.ts
+* apps/web/src/lib/api.ts
+* gitignore
+* package.json
+* rollback.bat
+* rollback.sh
+* tools/
+
+Changes Made:
+
+* Automatic pre-commit tracking of changed files
+
+Status:
+Logged Before Implementation
+============================
+==================================================
+Update #2
+Version: v2
+
+Date: 2026-05-10
+Time: 18:57:02
+
+Prompt:
+"Automatic pre-commit tracked update"
+
+Affected Files:
+
+* .githooks/post-commit
+* .githooks/pre-commit
+* .githooks/prepare-commit-msg
+* .gitignore
+* GETTING_STARTED.md
+* ai_context.md
+* apps/backend/prisma/prisma/dev.db
+* apps/backend/prisma/schema.prisma
+* apps/backend/src/index.ts
+* apps/backend/src/services/ai-assist/ai-providers.ts
+* apps/backend/src/services/ai-assist/ocr-providers.ts
+* apps/backend/src/services/ai-assist/processing-queue.ts
+* apps/backend/src/services/ai-assist/secret-store.ts
+* apps/backend/src/services/ai-assist/service.ts
+* apps/shared/src/types.ts
+* apps/web/app/dashboard/ai-assist/page.tsx
+* apps/web/app/dashboard/page.tsx
+* apps/web/app/settings/page.tsx
+* apps/web/next-env.d.ts
+* apps/web/src/lib/api.ts
+* package.json
+* rollback.bat
+* rollback.sh
+* tools/
+
+Changes Made:
+
+* Automatic pre-commit tracking of changed files
+
+Status:
+Logged Before Implementation
+============================

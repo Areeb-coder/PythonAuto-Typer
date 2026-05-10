@@ -64,6 +64,10 @@ export interface Settings {
   autoReconnect: boolean;
   reconnectInterval: number; // ms
   maxReconnectAttempts: number;
+  aiMode?: 'solve' | 'explain' | 'simplify' | 'rewrite' | 'answer-only';
+  ocrProvider?: 'paddle' | 'huggingface';
+  preprocessingQuality?: 'fast' | 'balanced' | 'high';
+  captureResolution?: 'low' | 'medium' | 'high';
 }
 
 export interface TypingStatus {
@@ -111,7 +115,7 @@ export interface HealthStatus {
 export interface LogMessage {
   id: string;
   level: 'info' | 'warn' | 'error' | 'debug';
-  category: 'backend' | 'websocket' | 'typing' | 'device' | 'reconnect' | 'queue' | 'pairing';
+  category: 'backend' | 'websocket' | 'typing' | 'device' | 'reconnect' | 'queue' | 'pairing' | 'ocr' | 'ai' | 'capture';
   message: string;
   timestamp: string;
   metadata?: Record<string, any>;

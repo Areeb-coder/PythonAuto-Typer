@@ -9,6 +9,8 @@ import { qrService } from './services/qr.js';
 import { deviceService } from './services/device.js';
 import { sessionService } from './services/session.js';
 import { loggingService } from './services/logging.js';
+import { aiAssistService } from './services/ai-assist/service.js';
+import type { AIMode } from './services/ai-assist/ai-providers.js';
 import type { HealthStatus } from '@smart-typer/shared';
 
 const PORT = parseInt(process.env.PORT || '4000', 10);
@@ -211,11 +213,11 @@ export async function startServer(): Promise<void> {
     });
 
     // Update settings
-    app.patch<{ Body: any }>('/api/settings', async (request, reply) => {
+    app.patch<{ Body: Record<string, unknown> }>('/api/settings', async (request, reply) => {
       try {
         const prisma = getPrisma();
         const updated = await prisma.settings.updateMany({
-          data: request.body,
+          data: request.body as any,
         });
         reply.send({ success: true });
       } catch (error) {
@@ -254,6 +256,77 @@ export async function startServer(): Promise<void> {
         logError('Failed to get engine status', error as Error);
         return { success: false, error: 'Failed to get engine status' };
       }
+    });
+
+    // AI Assist: set Gemini key (stored encrypted on backend)
+    app.post<{ Body: { apiKey: string } }>('/api/ai-assist/key', async (request, reply) => {
+      try {
+        const apiKey = request.body?.apiKey?.trim();
+        if (!apiKey) {
+          reply.code(400).send({ success: false, error: 'API key is required' });
+          return;
+        }
+        await aiAssistService.setGeminiKey(apiKey);
+        reply.send({ success: true });
+      } catch (error) {
+        logError('Failed to save Gemini key', error as Error);
+        reply.code(500).send({ success: false, error: 'Failed to save key' });
+      }
+    });
+
+    app.get('/api/ai-assist/key-hint', async () => {
+      const hint = await aiAssistService.getGeminiKeyHint();
+      return { success: true, hint };
+    });
+
+    app.post<{
+      Body: {
+        imageBase64: string;
+        source?: 'region' | 'window' | 'monitor';
+        ocrProvider?: 'paddle' | 'huggingface';
+        preprocessingQuality?: 'fast' | 'balanced' | 'high';
+        mode?: AIMode;
+        deviceId?: string;
+      };
+    }>('/api/ai-assist/process', async (request, reply) => {
+      try {
+        const imageBase64 = request.body?.imageBase64?.trim();
+        if (!imageBase64) {
+          reply.code(400).send({ success: false, error: 'imageBase64 is required' });
+          return;
+        }
+
+        const result = await aiAssistService.process(io, request.body);
+        reply.send({ success: true, result });
+      } catch (error) {
+        logError('AI Assist process failed', error as Error);
+        reply.code(500).send({ success: false, error: (error as Error).message });
+      }
+    });
+
+    app.post<{ Body: { text: string; speed?: number; deviceId: string } }>(
+      '/api/ai-assist/approve-typing',
+      async (request, reply) => {
+        try {
+          const text = request.body?.text?.trim();
+          const deviceId = request.body?.deviceId;
+          if (!text || !deviceId) {
+            reply.code(400).send({ success: false, error: 'text and deviceId are required' });
+            return;
+          }
+          const result = await aiAssistService.approveTyping(io, request.body);
+          reply.send({ success: true, result });
+        } catch (error) {
+          logError('AI Assist typing approval failed', error as Error);
+          reply.code(500).send({ success: false, error: (error as Error).message });
+        }
+      }
+    );
+
+    app.get<{ Querystring: { limit?: string } }>('/api/ai-assist/sessions', async (request) => {
+      const limit = request.query.limit ? parseInt(request.query.limit, 10) : 10;
+      const sessions = await aiAssistService.getRecent(limit);
+      return { success: true, sessions };
     });
 
     // Cleanup expired sessions periodically

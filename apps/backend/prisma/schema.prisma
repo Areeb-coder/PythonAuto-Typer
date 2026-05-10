@@ -58,9 +58,21 @@ model Settings {
   autoReconnect         Boolean  @default(true)
   reconnectInterval     Int      @default(1000) // ms
   maxReconnectAttempts  Int      @default(-1) // -1 for infinite
+  aiMode                String   @default("solve")
+  ocrProvider           String   @default("paddle")
+  preprocessingQuality  String   @default("balanced")
+  captureResolution     String   @default("medium")
   
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
+}
+
+model AISettings {
+  id                 String   @id @default(cuid())
+  geminiApiKeyCipher String?
+  geminiApiKeyHint   String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
 }
 
 model TypingHistory {
@@ -127,5 +139,71 @@ model Log {
   
   @@index([level])
   @@index([category])
+  @@index([createdAt])
+}
+
+model CaptureSession {
+  id              String   @id @default(cuid())
+  deviceId        String?
+  source          String   @default("region")
+  captureMetadata String?
+  imagePath       String?
+  status          String   @default("captured")
+  createdAt       DateTime @default(now())
+
+  ocrJobs         OCRJob[]
+  aiRequests      AIRequest[]
+
+  @@index([createdAt])
+  @@index([status])
+}
+
+model OCRJob {
+  id               String   @id @default(cuid())
+  captureSessionId String
+  captureSession   CaptureSession @relation(fields: [captureSessionId], references: [id], onDelete: Cascade)
+  provider         String
+  status           String   @default("pending")
+  inputHash        String?
+  resultJson       String?
+  confidenceAvg    Float?
+  latencyMs        Int?
+  error            String?
+  createdAt        DateTime @default(now())
+  completedAt      DateTime?
+
+  @@index([captureSessionId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model AIRequest {
+  id               String   @id @default(cuid())
+  captureSessionId String
+  captureSession   CaptureSession @relation(fields: [captureSessionId], references: [id], onDelete: Cascade)
+  mode             String   @default("solve")
+  inputText        String
+  outputText       String?
+  status           String   @default("pending")
+  latencyMs        Int?
+  error            String?
+  version          Int      @default(1)
+  createdAt        DateTime @default(now())
+  completedAt      DateTime?
+
+  @@index([captureSessionId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model ProcessingLog {
+  id          String   @id @default(cuid())
+  stage       String
+  status      String   @default("info")
+  message     String
+  metadata    String?
+  createdAt   DateTime @default(now())
+
+  @@index([stage])
   @@index([createdAt])
 }
