@@ -249,6 +249,34 @@ pnpm build                 # Build for production
 tail -f apps/backend/src/index.ts  # Not applicable, read terminal
 ```
 
+## Post-Base Version Tracking
+
+After base version completion, every modification must be tracked before implementation.
+
+```bash
+pnpm track:update --prompt "exact user request" \
+  --affected path/to/file1 \
+  --affected path/to/file2 \
+  --summary "short technical summary" \
+  --summary "why it was changed"
+```
+
+This command will:
+- Append immutable `updates.log` entry
+- Create snapshot `versions/v<number>/`
+- Update `current_version.txt`
+- Append `changelog.md`
+- Create zip backup in `versions/backups/`
+
+Git automation:
+- `pre-commit` auto-tracks pending changes
+- `prepare-commit-msg` auto-sets commit message as `[YYYY-MM-DD HH:MM:SS] Update v<number>`
+- `post-commit` auto-runs `git push`
+
+Rollback:
+- Windows: `rollback.bat v<number>`
+- macOS/Linux: `bash rollback.sh v<number>`
+
 ## Troubleshooting Checklist
 
 If something doesn't work:

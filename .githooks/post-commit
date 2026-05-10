@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+
+# Auto-push committed version to current upstream branch.
+git push

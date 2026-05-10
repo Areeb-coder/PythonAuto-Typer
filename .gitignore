@@ -28,3 +28,5 @@ __pycache__/
 venv/
 ENV/
 env/
+versions/v*/
+versions/backups/

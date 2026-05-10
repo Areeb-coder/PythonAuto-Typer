@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+
+MSG_FILE="$1"
+
+python tools/versioning/generate_commit_message.py > "$MSG_FILE"

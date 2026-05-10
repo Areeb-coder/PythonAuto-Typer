@@ -16,7 +16,10 @@
     "start": "concurrently \"pnpm --filter web start\" \"pnpm --filter backend start\"",
     "db:push": "pnpm --filter backend db:push",
     "db:reset": "pnpm --filter backend db:reset",
-    "db:studio": "pnpm --filter backend db:studio"
+    "db:studio": "pnpm --filter backend db:studio",
+    "track:update": "python tools/versioning/track_update.py",
+    "track:auto": "python tools/versioning/auto_track_from_git.py",
+    "track:install-hooks": "python tools/versioning/install_hooks.py"
   },
   "devDependencies": {
     "concurrently": "^9.0.0",
